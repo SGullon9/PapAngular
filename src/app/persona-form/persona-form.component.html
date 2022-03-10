@@ -1,0 +1,38 @@
+<div class="card my-5">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #personaForm="ngForm">
+        <div class="form-group">
+          <label for="nombre">Name</label>
+          <input type="text" [(ngModel)]="persona.nombre" 
+            class="form-control" 
+            id="nombre" 
+            name="nombre" 
+            placeholder="Enter your name"
+            required #nombre="ngModel">
+        </div>
+
+        <div>
+            Password:
+            <label for="idPwd"></label>
+            <input type="password" id="idPwd" name="pwd" [(ngModel)]="persona.pwd">
+        </div>
+
+        <div>
+            <span>Pais de nacimiento</span>
+             <select name="IdPaisNace">
+               <option *ngFor="let pais of paises" value={{pais.id}}>{{pais.nombre}}</option>
+             </select>
+        </div>
+
+        <div>
+            <span>Pais de residencia</span>
+             <select name="IdPaisReside">
+               <option *ngFor="let pais of paises" value={{pais.id}}>{{pais.nombre}}</option>
+             </select>
+        </div>
+        
+        <button type="submit" [disabled]="!personaForm.form.valid" 
+          class="btn btn-info">Submit</button>
+      </form>
+    </div>
+  </div>
